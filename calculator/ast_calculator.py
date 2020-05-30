@@ -22,26 +22,26 @@ def evaluate(Node):
 
     try:
         if Node.operation == '+':
-            return evaluate(Node.right_n) + Node.left_n.value
+            return evaluate(Node.left_n) + evaluate(Node.right_n)
         elif Node.operation == '-':
-            return evaluate(Node.right_n) - Node.left_n.value
+            return evaluate(Node.left_n) - evaluate(Node.right_n)
         elif Node.operation == '*':
-            return evaluate(Node.right_n) * Node.left_n.value
+            return evaluate(Node.left_n) * evaluate(Node.right_n)
         elif Node.operation == '/':
-            if Node.right_n.value != 0:
-                return evaluate(Node.right_n) / Node.left_n.value
+            if Node.left_n.value != 0:
+                return evaluate(Node.left_n) / evaluate(Node.right_n)
             else:
                 raise ZeroDivisionError
     except:
         if Node.operation == '+':
-            return evaluate(Node.left_n) + Node.right_n.value
+            return evaluate(Node.right_n) + evaluate(Node.left_n)
         elif Node.operation == '-':
-            return evaluate(Node.left_n) - Node.right_n.value
+            return evaluate(Node.right_n) - evaluate(Node.left_n)
         elif Node.operation == '*':
-            return evaluate(Node.left_n) * Node.right_n.value
+            return evaluate(Node.right_n) * evaluate(Node.left_n)
         elif Node.operation == '/':
-            if Node.left_n.value != 0:
-                return evaluate(Node.left_n) / Node.right_n.value
+            if Node.right_n.value != 0:
+                return evaluate(Node.right_n) / evaluate(Node.left_n)
             else:
                 raise ZeroDivisionError
 
